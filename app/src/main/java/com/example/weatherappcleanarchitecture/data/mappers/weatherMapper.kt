@@ -25,7 +25,7 @@ fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherDataDomain>>{
             pressure = pressure,
             windSpeed = windSpeed,
             humidity = humidity,
-            weatherType = WeatherType.fromWMO(index)
+            weatherType = WeatherType.fromWMO(weatherCode)
         )
     }.groupBy {
         it.time.dayOfMonth
