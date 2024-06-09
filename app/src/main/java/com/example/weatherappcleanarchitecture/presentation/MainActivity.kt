@@ -1,18 +1,22 @@
 package com.example.weatherappcleanarchitecture.presentation
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.weatherappcleanarchitecture.presentation.ui.theme.DeepBlue
 import com.example.weatherappcleanarchitecture.presentation.ui.theme.WeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +26,7 @@ class MainActivity : ComponentActivity() {
     private val viewModel: WeatherViewModel by viewModels()
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         permissionLauncher = registerForActivityResult(
@@ -45,7 +50,13 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(Color.DarkGray)
                     ){
-
+                        WeatherCard(
+                            state = viewModel.state,
+                            backgroundColor = DeepBlue,
+                        )
+                        Text(
+                            text = "Working",
+                        )
                     }
                 }
             }
