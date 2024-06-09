@@ -21,18 +21,13 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                 ) { innerPadding ->
-                    Greetings(modifier = Modifier.padding(innerPadding))
+                    WeatherCard(
+                        state = WeatherState(),
+                        backgroundColor = Color.DarkGray,
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greetings(modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello, world!",
-        modifier = modifier
-            .background(Color.Green)
-    )
 }
