@@ -1,4 +1,4 @@
-package com.example.weatherappcleanarchitecture.domain.data.remote
+package com.example.weatherappcleanarchitecture.data.remote
 
 import com.squareup.moshi.Json
 
@@ -7,9 +7,11 @@ data class WeatherDataDto (
     @field: Json(name = "temperature_2m")
     val temperatureList: List<Double>,
     @field: Json(name = "weathercode")
-    val weatherCodeList: List<Double>,
+    val weatherCodeList: List<Int>,
     @field: Json(name = "windspeed_10m")
     val windSpeedList: List<Double>,
+    @field: Json(name = "pressure_msl")
+    val pressureList: List<Double>,
     @field: Json(name = "humidity")
     val humidityList: List<Double>,
 )

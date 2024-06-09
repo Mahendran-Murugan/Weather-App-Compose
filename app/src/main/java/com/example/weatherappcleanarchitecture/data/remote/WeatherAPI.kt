@@ -1,4 +1,4 @@
-package com.example.weatherappcleanarchitecture.domain.data.remote
+package com.example.weatherappcleanarchitecture.data.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -10,4 +10,5 @@ interface WeatherAPI {
         @Query("latitude") latitude : Double,
         @Query("longitude") longitude : Double,
     ): WeatherData
+
 }

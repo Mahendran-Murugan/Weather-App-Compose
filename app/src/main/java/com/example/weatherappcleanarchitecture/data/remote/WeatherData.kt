@@ -1,4 +1,4 @@
-package com.example.weatherappcleanarchitecture.domain.data.remote
+package com.example.weatherappcleanarchitecture.data.remote
 
 import com.squareup.moshi.Json
 
