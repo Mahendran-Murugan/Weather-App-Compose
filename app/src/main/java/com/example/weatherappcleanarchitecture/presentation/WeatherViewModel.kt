@@ -16,25 +16,26 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
     private val locationTracker: LocationTracker
-): ViewModel(){
+): ViewModel() {
     var state by mutableStateOf(WeatherState())
         private set
 
-    fun loadWeatherInfo(){
+    fun loadWeatherInfo() {
         viewModelScope.launch {
             state = state.copy(
                 isLoading = true,
                 error = null,
             )
-            locationTracker.getCurrentLocation()?.let{ loc->
-                when(val result = repository.getWeatherData(loc.latitude, loc.latitude)){
-                    is Resource.Success ->{
+            locationTracker.getCurrentLocation()?.let { loc ->
+                when (val result = repository.getWeatherData(loc.latitude, loc.latitude)) {
+                    is Resource.Success -> {
                         state = state.copy(
                             weatherInfo = result.data,
                             isLoading = false,
                             error = null
                         )
                     }
+
                     is Resource.Error -> {
                         state = state.copy(
                             weatherInfo = null,
