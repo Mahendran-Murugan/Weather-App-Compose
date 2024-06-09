@@ -7,7 +7,7 @@ interface WeatherAPI {
 
     @GET("v1/forecast?hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m,pressure_msl")
     suspend fun getWeatherInfo(
-        @Query("latitude") lat : Double,
-        @Query("longitude") long : Double,
-    )
+        @Query("latitude") latitude : Double,
+        @Query("longitude") longitude : Double,
+    ): WeatherData
 }
